@@ -66,20 +66,5 @@ namespace TestProject
             HomePage homePage = loginPage.LoginAs(username, "secret_sauce");
             Assert.Equal("Swag Labs", homePage.GetMessage());
         }
-
-
-
-        //private void CaptureScreenshot(string fileName)
-        //{
-        //    try
-        //    {
-        //        var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-        //        screenshot.SaveAsFile($"{fileName}_{DateTime.Now:yyyyMMddHHmmss}.png");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Failed to capture screenshot: {ex.Message}");
-        //    }
-        //}
     }
 }
