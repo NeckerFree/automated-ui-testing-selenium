@@ -21,12 +21,14 @@ namespace Entities
 
         private static IWebDriver CreateFirefoxDriver()
         {
-            return new ChromeDriver(new ChromeOptions());
+            return new FirefoxDriver(new FirefoxOptions());
         }
 
         private static IWebDriver CreateChromeDriver()
+            
         {
-            return new FirefoxDriver(new FirefoxOptions());
+            return new ChromeDriver(new ChromeOptions());
+
         }
     }
 }

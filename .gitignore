@@ -12,3 +12,9 @@
 *.db-wal
 
 *.testlog
+*.bin
+/TestSolution/.vs/TestSolution/DesignTimeBuild/.dtbcache.v2
+*.v2
+/TestSolution/.vs/TestSolution/v17/.suo
+/TestSolution/.vs/TestSolution/v17/DocumentLayout.backup.json
+/TestSolution/.vs/TestSolution/v17/DocumentLayout.json
