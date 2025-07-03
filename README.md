@@ -17,10 +17,12 @@ LoginPage.cs – Handles all login interactions.
 HomePage.cs – Validates successful login by checking the dashboard title.
 
 ✅ Test Cases
-Test Case	Description
-Login_EmptyCredentials_UserRequired	Submits empty username and password; expects “Username is required”.
-Login_CredentialsWithUsername_PasswordRequired	Submits a username only; expects “Password is required”.
-Login_CredentialsWithUsernameAndPassword_SuccessfulLogin	Submits valid username and password; expects successful login.
+| Test Case                                                  | Description                                                          |
+| ---------------------------------------------------------- | -------------------------------------------------------------------- |
+| Login\_EmptyCredentials\_UserRequired                      | Submits empty username and password; expects “Username is required”. |
+| Login\_CredentialsWithUsername\_PasswordRequired           | Submits a username only; expects “Password is required”.             |
+| Login\_CredentialsWithUsernameAndPassword\_SuccessfulLogin | Submits valid username and password; expects successful login.       |
+
 
 🛠️ How to Run the Tests
 Install Dependencies
