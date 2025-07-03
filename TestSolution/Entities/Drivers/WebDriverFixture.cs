@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Entities
+namespace Entities.Drivers
 {
 
     public sealed class WebDriverFixture : IDisposable
@@ -9,7 +9,7 @@ namespace Entities
 
         public WebDriverFixture()
         {
-            Driver = BrowserFactory.CreateDriver(BrowserType.Chrome);
+            Driver = BrowserFactory.CreateDriver(BrowserType.Firefox);
         }
 
         public void Dispose()

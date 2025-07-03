@@ -1,72 +1,90 @@
-# Selenium WebDriver Testing Project
+﻿🚀 Selenium Automated Login Tests
+This project contains automated Selenium tests for verifying login behavior on SauceDemo using C#, xUnit, and WebDriver. The tests cover key use cases like missing credentials and successful login scenarios.
 
-## Overview
+📂 Project Overview
+Tests Included
 
-This project provides a framework for browser automation testing using Selenium WebDriver. It includes a factory pattern for creating browser instances and a fixture for managing the WebDriver lifecycle.
+EpamParallelTest.cs
+Runs tests in parallel using xUnit’s collection fixtures with shared WebDriver instances.
 
-## Project Structure
+EpamSerialTest.cs
+Runs tests serially with independent WebDriver instances.
 
-### Key Components
+Page Objects
 
-1. **BrowserFactory.cs**
-   - Static factory class for creating WebDriver instances
-   - Supports Chrome and Firefox browsers
-   - Uses the BrowserType enum to determine which browser to instantiate
+LoginPage.cs – Handles all login interactions.
 
-2. **BrowserType.cs**
-   - Enum defining supported browser types (Chrome, Firefox)
+HomePage.cs – Validates successful login by checking the dashboard title.
 
-3. **WebDriverFixture.cs**
-   - Implements IDisposable for proper resource cleanup
-   - Creates and manages the WebDriver instance lifecycle
-   - Automatically quits and disposes the driver when the fixture is disposed
+✅ Test Cases
+Test Case	Description
+Login_EmptyCredentials_UserRequired	Submits empty username and password; expects “Username is required”.
+Login_CredentialsWithUsername_PasswordRequired	Submits a username only; expects “Password is required”.
+Login_CredentialsWithUsernameAndPassword_SuccessfulLogin	Submits valid username and password; expects successful login.
 
-4. **Entities.csproj**
-   - Project configuration file
-   - Targets .NET 9.0
-   - Includes necessary Selenium WebDriver packages
+🛠️ How to Run the Tests
+Install Dependencies
 
-## Usage
+Make sure you have:
 
-### Creating a WebDriver Instance
+.NET SDK installed (tested with .NET 6+).
 
-```csharp
-// Create a Chrome driver
-var chromeDriver = BrowserFactory.CreateDriver(BrowserType.Chrome);
+A supported browser driver (e.g., ChromeDriver or GeckoDriver) on your PATH.
 
-// Create a Firefox driver
-var firefoxDriver = BrowserFactory.CreateDriver(BrowserType.Firefox);
-```
+Restore NuGet packages:
 
-### Using the WebDriverFixture
-
-```csharp
-using (var fixture = new WebDriverFixture())
-{
-    var driver = fixture.Driver;
-    // Your test code here
-    driver.Navigate().GoToUrl("https://example.com");
-    // The driver will be automatically disposed when the using block ends
-}
-```
-
-## Dependencies
-
-- Selenium.WebDriver (v4.33.0)
-- Selenium.WebDriver.ChromeDriver (v138.0.7204.4900)
-- Selenium.WebDriver.GeckoDriver (v0.36.0)
+dotnet restore
+Build the Project
 
 
-## Setup Instructions
+dotnet build
+Run Tests
 
-1. Ensure you have .NET 9.0 SDK installed
-2. Restore NuGet packages
-3. Make sure you have the appropriate browser versions installed that match the driver versions
-4. For Chrome/Firefox, ensure the browsers are installed in their default locations
+For serial tests:
 
-## Contribution
 
-Feel free to extend this project by:
-- Adding support for more browsers (Edge, Safari, etc.)
-- Implementing additional WebDriver configuration options
-- Adding helper methods for common testing operations
+dotnet test --filter FullyQualifiedName~EpamSerialTest
+For parallel tests:
+
+
+dotnet test --filter FullyQualifiedName~EpamParallelTest
+View Results
+
+xUnit test results will display directly in your terminal.
+
+🔑 Process to Follow When Writing or Updating Tests
+Identify the Use Case
+
+Define what behavior you need to test: e.g., login with missing username.
+
+Create/Update Test Methods
+
+Place your tests in either EpamSerialTest or EpamParallelTest depending on whether they should run in sequence or concurrently.
+
+Use [Fact] for single tests or [Theory] with [InlineData] for parameterized tests.
+
+Use Page Objects
+
+Use LoginPage methods like LoginAs() or LoginInvalidCredentials() to interact with the UI.
+
+Validate results via assertions on HomePage or error messages.
+
+Keep Test Isolation
+
+Each test should start from the SauceDemo login page.
+
+Dispose() method ensures cleanup by quitting WebDriver sessions.
+
+Run Tests Locally
+
+
+⚙️ Notes on Parallel vs. Serial Execution
+EpamParallelTest
+Uses xUnit’s IClassFixture with WebDriverFixture and a collection definition to enable parallel execution of tests sharing the same WebDriver instance.
+
+EpamSerialTest
+Creates a fresh WebDriver instance for each test, ensuring full isolation but slower execution.
+
+Selenium WebDriver for .NET
+
+SauceDemo – demo app used for testing.

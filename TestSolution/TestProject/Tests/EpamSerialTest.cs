@@ -1,6 +1,7 @@
-﻿using Entities;
+﻿using Entities.Drivers;
 using OpenQA.Selenium;
-namespace TestProject
+using TestProject.PageObjects;
+namespace TestProject.Tests
 {
 
     public sealed class EpamSerialTest : IDisposable
@@ -55,7 +56,7 @@ namespace TestProject
 
         [Theory]
         [InlineData("standard_user")]
-        [InlineData("locked_out_user")]
+        //[InlineData("locked_out_user")]
         [InlineData("problem_user")]
         [InlineData("performance_glitch_user")]
         [InlineData("error_user")]

@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace TestProject
+namespace TestProject.PageObjects
 {
     internal class LoginPage
     {
@@ -34,7 +34,7 @@ namespace TestProject
         private string GetErrorMessage()
         {
             var element = driver.FindElement(ErrorMessage);
-            return (element != null) ? element.Text.Replace("Epic sadface: ", string.Empty) : string.Empty;
+            return element != null ? element.Text.Replace("Epic sadface: ", string.Empty) : string.Empty;
         }
 
         private void SendUserName(string username)
@@ -55,9 +55,6 @@ namespace TestProject
         {
             driver.FindElement(LoginButtonLocator).Click();
         }
-
-
-
 
     }
 }

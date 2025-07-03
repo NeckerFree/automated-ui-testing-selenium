@@ -1,12 +1,12 @@
 ﻿
 using OpenQA.Selenium;
 
-namespace TestProject
+namespace TestProject.PageObjects
 {
     internal class HomePage
     {
         private readonly IWebDriver driver; 
-        private static By DashBoardTitle => By.CssSelector("div.app_logo");
+        private static By DashBoardTitle => By.CssSelector("div.header_label > div.app_logo");
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;

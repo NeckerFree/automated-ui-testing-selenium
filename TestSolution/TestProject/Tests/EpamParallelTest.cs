@@ -1,7 +1,8 @@
-﻿using Entities;
+﻿using Entities.Drivers;
 using OpenQA.Selenium;
+using TestProject.PageObjects;
 
-namespace TestProject
+namespace TestProject.Tests
 {
     [Collection("WebDriverCollection")]
     public sealed class EpamParallelTest : IClassFixture<WebDriverFixture>, IDisposable
@@ -63,7 +64,8 @@ namespace TestProject
             Console.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] Running Login_CredentialsWithUsernameAndPassword_SuccessfulLogin with username: {username}");
             var loginPage = new LoginPage(driver);
             HomePage homePage = loginPage.LoginAs(username, password);
-            Assert.Equal("Swag Labs", homePage.GetMessage());
+            var tittle = homePage.GetMessage();
+            Assert.Equal("Swag Labs", tittle);
         }
     }
 

@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
-namespace Entities
+namespace Entities.Drivers
 {
     public static class BrowserFactory
     {
@@ -15,19 +15,22 @@ namespace Entities
                 case BrowserType.Firefox:
                     return CreateFirefoxDriver();
                 default:
-                   throw new ArgumentOutOfRangeException(nameof(browserType), browserType,null);
+                    throw new ArgumentOutOfRangeException(nameof(browserType), browserType, null);
             }
         }
 
         private static IWebDriver CreateFirefoxDriver()
         {
-            return new FirefoxDriver(new FirefoxOptions());
+            var firefoxOptions = new FirefoxOptions();
+            firefoxOptions.SetPreference("browser.privatebrowsing.autostart", true);
+            return new FirefoxDriver(firefoxOptions);
         }
 
         private static IWebDriver CreateChromeDriver()
-            
         {
-            return new ChromeDriver(new ChromeOptions());
+            var options = new ChromeOptions();
+            options.AddArgument("--guest");
+            return new ChromeDriver(options);
 
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Entities
+﻿namespace Entities.Drivers
 {
     public enum BrowserType
     {
